@@ -53,7 +53,136 @@ table {
     box-sizing: border-box;
 }
 
+// variables Here
+@main-color: @specific-red;
+@accent-color: @blizzard-blue;
+
+@specific-red: #FFE4B5;
+@blizzard-blue: #4682B4;
+
+@font-stack: Open Sans, "sans-serif";
+
+// Mixins
+
+.bordered(){
+  border-bottom: 2px dashed grey;
+  padding: 15px;
+}
+
+.custom-btn (@width: 200px, @bgColor: #FFBF27, @fontColor: black, @height: 45px, @border-radius: 10px ) {
+  display: block;
+  margin: 0 10px 20px;
+  cursor: pointer;
+  height: @height;
+  font-size: 2rem;
+  border-radius: @border-radius;
+  width: @width;
+  background-color: @bgColor;
+  color: @fontColor;
+  
+  &:hover {
+    background-color: @fontColor;
+    color: @bgColor;
+  }
+}
+
+// .center() {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
+
 html, body {
     height: 100%;
 }
 
+html {
+	font-size: 62.5%;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Opens Sans';
+	font-weight: bold;
+}
+
+a {
+	font-family: 'Palatino';
+}
+
+//Container
+
+.container {
+	max-width: 880px;
+	min-height: 100%; //?
+	padding: 20px;
+	margin: 0 auto; // centers
+	font-size: 2rem;
+	@media(max-width: 500px) {
+		max-width: 500px;
+		padding: 0;
+	}
+}
+
+nav{
+  display: flex;
+  justify-content: space-around;
+  padding: 25px;
+  margin-bottom: 5rem;
+  @media(max-width: 500px) {
+				width: 100%;
+			  display: flex;
+			  border: 0;
+			  align-items: center;
+				flex-direction: column;
+				padding: 25px 0;
+			}
+  a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: @blizzard-blue
+  }
+   &:hover {
+    background-color: @specific-red;
+    color: @accent-color;
+  }
+  @media (max-width: 500px) {
+					font-size: 2rem;
+					padding: 10px 0;
+					width: 100%;
+					text-align: center;
+          border-bottom: 1px solid black;
+				}
+  
+  }
+
+.ctr-title {
+    display:flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    padding: 20px;
+    margin: 0 auto;
+    @media (max-width: 500px) {
+			padding-top: 0px;
+		}
+  h1{
+    font-family: @font-stack;
+    font-size: 8rem;
+  }
+  h2{
+    font-size: 2rem;
+    padding: 25px;
+  }
+  p {
+			font-size: 2rem;
+			margin: 20px;
+			padding-bottom: 40px;
+      .bordered();
+		}
+  
+  .buttons{
+      button {
+      .custom-btn();
+    }
+  }
+}
